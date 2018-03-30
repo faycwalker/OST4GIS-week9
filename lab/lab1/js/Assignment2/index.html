@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- CSS Imports -->
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+      <!-- Load Leaflet -->
+      <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+      <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+    <link rel="stylesheet" href="css/leaflet.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+
+    <!--Left Panel-->
+
+	    <div class="sidebar">
+      <h1>America's Prisons</h1>
+      <!-- Buttons <button type="button">-->
+      <button id= "Previous">Previous</button>
+     <button id= "Next"> Next </button>
+	    <div id="Slide1" class="slide">
+  <p class= "main"> There are over 4,900 prisons in the United States, incarcerating a total of more than 2.2 million people, making The United States the world leader in per capita incarceration. From state to state the percentage of the population incarcerated ranges from 0.33 percent to 1.3 percent, in New Hampshire and West Virginia, respectively. One of the unexplored political ramifications of the United State’s disproportionate incarceration rates is the way our political map is distorted when we strip felons of their voting rights. When we dig into the numbers in the 2016 elections, the number of those incarcerated who were counted as voters was significant enough to tip the scales in a razor close election.
+</p>
+</div>
+  <div id="Slide2" class="slide">
+    <p class= "main"> The American Electoral College and incarceration in America are worth looking at side by side because the 538 Electoral College votes are allocated according to congressional representatives, which are in turn determined by population according to the Decennial Census. The census counts those incarcerated as part of the population wherever they are incarcerated.
+    Currently incarcerated felons can only vote in Vermont and Maine. However, despite the fact that they cannot vote, the currently incarcerated are still counted as part of the census cumulative population. This means that these are votes that are allocated but cannot be legally cast.
+    An average electoral vote represents 436,000 people but wildly varies from one electoral vote per 143,000 people in Wyoming, our least populated state, to one vote for every 500,000 or so people in more populated states like California, Florida, and New York.
+    Is the number of people banned from voting because of felony voting laws greater than the vote margin between the two major candidates in the 2016 election?
+
+    In 2016, approximately 129 million people, or 58 percent of eligible Americans voted in the Presidential Election. Michigan, Wisconsin, New Hampshire, Minnesota, Pennsylvania, and Florida, six states worth a cumulative 89 electoral votes were all determined by less than 2 percentage points.
+    According to the Washington Post, the election results hinged on about 100,000 votes cast across three key swing states, Michigan, Wisconsin, and Pennsylvania.
+    What were the implications of felony voting prohibitions in these three key swing states in 2016?
+</p>
+</div>
+  <div id="Slide3" class ="slide">
+    <p class= "main"> In Michigan, the prison population is 71,328 people and comprises 0.72 percent of the total population and would comprise 1.3 percent of turnout. Donald Trump won the state by 11,837 votes, 0.11 percent of the total population or 0.2 percent of total turnout.
+    Michigan is worth 16 electoral votes. Felons cannot vote while incarcerated in Michigan.
+</p>
+</div>
+  <div id="Slide4" class ="slide">
+  <p class= "main"> In Wisconsin, the prison population is 39,339 people and comprises 0.68 percent of the total population and would be 1.3 percent of turnout. Donald Trump won the state by 27,257 votes, 0.47 percent of the total population and 0.9 percent of turnout.
+    Wisconsin is worth 10 electoral votes. Felons cannot vote while incarcerated or serving probation or parole time in Wisconsin.
+</p>
+</div>
+<div id="Slide5"class="slide">
+<p class= "main"> In Pennsylvania, the prison population is 106,378 people and comprises 0.83 percent of the total population, or 1.7 percent of turnout. Donald Trump won the state by 68,236 votes, 0.53 percent of the total population and 1.1 percent of turnout.
+    Pennsylvania is worth 20 electoral votes. Felons cannot vote while incarcerated in Pennsylvania.
+  </p>
+  </div>
+      <div id="Slide6" class="slide">
+        <p class= "main"> Hillary Clinton lost the 2016 election by 38 electoral votes. Together, Michigan, Wisconsin, and Pennsylvania account for 46 votes. While it is extremely unlikely that incarcerated populations would have turned out at rates significantly higher than average, and that they would have voted as a monolithic bloc for Hillary Clinton, it is fair to say that the margin of victory in all three key swing states have prison populations that far outweigh Donald Trump’s margin of victory.
+        </p>
+        <br><br><br>
+        <p class = "endnote"> Sources:<br>
+    https://www.washingtonpost.com/graphics/politics/2016-election/swing-state-margins/<br>
+    Voter Election Project<br>
+    Bureau of Justice Statistics<br>
+  </p>
+  </div>
+</div>
+
+    <!-- Map -->
+    <div id="map"></div>
+
+    <!-- Javascript Imports -->
+    <script src="js/leaflet.js"></script>
+    <script src="js/underscore.js"></script>
+    <script src="js/jquery-2.2.0.js"></script>
+    <script src="js/example.js"></script>
+    <script src="js/data.js"></script>
+  </body>
+</html>

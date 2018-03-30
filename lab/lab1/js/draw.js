@@ -11,9 +11,13 @@ Task 2: Add rectangles to map
 
 Add the rectangle layers to the map when they are drawn. Hint: you can use the
 addLayer function that we have used in the past.
+*/
 
+
+   // Do whatever else you need to. (save to db; add to map etc)
+
+/*
 Task 3: Limit to one rectangle
-
 For our application, we only want one rectangle to be displayed on the map at
 any given time. When a user draws a new rectangle, the old rectangle should be
 removed from the map. To remove a previously drawn rectangle, we will need to
@@ -26,7 +30,9 @@ You will also need to remove the previous layer from the map.
 If you get the error: "Cannot read property '_leaflet_id' of undefined", it
 may be because you are trying to remove a layer that does not yet exist. Can you
 check to see if myRectangle is defined before trying to remove it?
+*/
 
+/*
 Task 4: Add shape to sidebar
 
 Let's add the shape we've created to the sidebar. In the HTML, there is a
@@ -71,6 +77,9 @@ Moving your mouse outside of the circle should remove the highlighting.
 
 // Global Variables
 var myRectangle;
+var oldShape;
+var editableLayer = new L.FeatureGroup();
+map.addLayer(editableLayer);
 
 // Initialize Leaflet Draw
 var drawControl = new L.Control.Draw({
@@ -82,12 +91,22 @@ var drawControl = new L.Control.Draw({
     rectangle: true,
   }
 });
-
 map.addControl(drawControl);
 
 // Event which is run every time Leaflet draw creates a new layer
-map.on('draw:created', function (e) {
-    var type = e.layerType; // The type of shape
-    var layer = e.layer; // The Leaflet layer for the shape
-    var id = L.stamp(layer); // The unique Leaflet ID for the layer
+   map.on('draw:created', function (e) {
+       var type = e.layerType; // The type of shape
+       var layer = e.layer // The Leaflet layer for the shape
+       var id = L.stamp(layer); // The unique Leaflet ID for the layer
+//make shapes
+// editableLayer.addLayer(map);
+   if (myRectangle!==undefined) {
+     map.removeLayer(myRectangle)
+   };
+   myRectangle = layer
+   map.addLayer(myRectangle)
 });
+//cleanup old content
+//plotnew
+
+//<div class="shape" data-leaflet-id="[the id]"><h1>Current ID: [the id]</h1></div>

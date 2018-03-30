@@ -46,6 +46,7 @@ a cleaner, easier way to test ajax calls than simply using the console.
 
 
 Task 1: Use Mapbox's 'Search' API to 'geocode' information from your input
+https://api.mapbox.com/geocoding/v5/mapbox.places/28%20tamanaco%20dr.%20charlestown,%20ri%2002813.json?limit=1&access_token=pk.eyJ1IjoiZmF5Y3dhbGtlciIsImEiOiJjamZkNHlrcWw0NjBjMnFxN2UwMWtlMTduIn0.bZ-F1np_7lix5gcgA7yucA
 
 The docs: https://www.mapbox.com/api-documentation/#geocoding
 (For this first task, the URL pattern you'll want to produce looks like this:
@@ -66,7 +67,6 @@ Questions you should ask yourself:
   - How does the output look?
   - What can I do with the output?
   - Can I get a lat/lng from the output?
-
 
 Task 2: Use Mapbox's 'directions' API to generate a route based on your origin and destination
 
@@ -104,26 +104,35 @@ as an example). How can you convert the array of points into the GeoJSON format?
 Hint: GeoJSON defines points as [lng, lat] instead of [lat, lng], so you may need
 to flip your coordinates.
 
-
 Task 4: Plot your route to the map
-
 If you've completed step 3 with valid GeoJson (test it at geojson.io), plotting it
 to the map should be a breeze.
-
 
 Task 5 (stretch): Display travel time (seconds and minutes) and distance (km or mi)
 
 Task 6 (stretch): See if you can refocus the map to roughly the bounding box of your route
 
-
 ===================== */
-
 var state = {
   position: {
     marker: null,
     updated: null
   }
 };
+var url= 'https://api.mapbox.com/geocoding/v5/mapbox.places/28%20tamanaco%20dr.%20charlestown,%20ri%2002813.json?limit=1&access_token=pk.eyJ1IjoiZmF5Y3dhbGtlciIsImEiOiJjamZkNHlrcWw0NjBjMnFxN2UwMWtlMTduIn0.bZ-F1np_7lix5gcgA7yucA'
+var directpolyline = 'qsyrF`t|iM~vEkCjoAg}MrjDgcAvFogOgoJkwH{y{@g~uAsum@q|VwzMa_Zmzj@e}_@c`KqgNgqA_qFzoAqrEgyOi{Klu@{bKu|EssBe}L_{UctK}hDo_Du{`@utIsd^i`JuuOo|Aim[lqAcuIwjLexVr{BueH_~AwgUjg@wo_AclE{lP{JgvNqsHqbJf`Bmm[{bBseYm|EknJpkBqw@`QixFjlEnHdf@w_CvRurGypCgrK'
+var wayFinder = $.ajax('https://api.mapbox.com/directions/v5/mapbox/driving/-75.19,39.95;-71.68,41.37?access_token=pk.eyJ1IjoiZmF5Y3dhbGtlciIsImEiOiJjamZkNHlrcWw0NjBjMnFxN2UwMWtlMTduIn0.bZ-F1np_7lix5gcgA7yucA')
+var decodelatlngs = decode(directpolyline)
+var parseData = wayFinder.done (function (data){
+  console.log (data.routes[0]['distance']);
+  console.log(data.routes[0]['duration'])
+});
+var distanceSeconds = parseData.done (function (data) {
+  console.log (data.routes[0]['distance'])
+});
+var duration = parseData.done (function (data) {
+  console.log(data.routes[0]['duration'])
+});
 
 /* We'll use underscore's `once` function to make sure this only happens
  *  one time even if weupdate the position later
@@ -154,7 +163,6 @@ $(document).ready(function() {
     alert("Unable to access geolocation API!");
   }
 
-
   /* Every time a key is lifted while typing in the #dest input, disable
    * the #calculate button if no text is in the input
    */
@@ -168,10 +176,10 @@ $(document).ready(function() {
 
   // click handler for the "calculate" button (probably you want to do something with this)
   $("#calculate").click(function(e) {
+    var route = L.polyline (decodelatlngs, {color: 'red'}).addTo(map)
     var dest = $('#dest').val();
     console.log(dest);
+    map.flyTo([41.01, -73.50], 8);
   });
 
 });
-
-

@@ -1,0 +1,9 @@
+
+   var editableLayers = new L.FeatureGroup();
+   map.addLayer(editableLayers);
+
+   map.on('draw:created', function(e) {
+     var type = e.layerType,
+       layer = e.layer;
+
+       editableLayers.addLayer(layer);
